@@ -30,7 +30,7 @@ console.log("'text' + null: ", 'text' + null);
 // Постфиксная и префиксная форма записи
 ++num;
 let q = num++;
-console.log('++num: ', num);
+console.log('++num: ', ++num);
 console.log('num++: ', q);
 
 // математические операторы приводят операнды к числам
