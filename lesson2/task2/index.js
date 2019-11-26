@@ -14,14 +14,17 @@ const m = function run() {
     return 17;
 };
 
-Выведите в консоль типы данных переменных
 
-Основные требования:
-Начальный код находится в редакторе ниже
-
-Выведите в консоль типы данных переменных
-
-Основные требования:
-Для каждой переменной выведите в консоль сообщение в формате a: number
-Для этого передайте в функцию console.log() строку с соответствующей переменной и выражение через запятую(пример: console.log('a: ', typeof a);)
-Не забудьте пробел после двоеточия в первом аргументе
+console.log('a: ', typeof a);
+console.log('b: ', typeof b);
+console.log('c: ', typeof c);
+console.log('d: ', typeof d);
+console.log('e: ', typeof e);
+console.log('f: ', typeof f);
+console.log('g: ', typeof g);
+console.log('h: ', typeof h);
+console.log('i: ', typeof i);
+console.log('j: ', typeof j);
+console.log('k: ', typeof k);
+console.log('l: ', typeof l);
+console.log('m: ', typeof m);
