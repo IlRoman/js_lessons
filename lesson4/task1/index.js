@@ -1,6 +1,8 @@
-let n = 150;
+let n = 3;
 let sum = 0;
 
-while (sum < n) {
-    sum++
+for (let i = 0; i <= n; i++) {
+    sum += i;
 }
+
+// console.log(sum);
