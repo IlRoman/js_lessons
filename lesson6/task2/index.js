@@ -7,4 +7,5 @@ function getSum(arr) {
     } else {
         return null;
     }
+    return result;
 }
