@@ -1,9 +1,5 @@
 function sum(from, to) {
-    let result = 0;
-    for (let i = from; i <= to; i++) {
-        result += i;
-    }
-    return result;
+    return from + to;
 }
 
 function compareSums(a, b, c, d) {
