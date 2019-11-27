@@ -3,6 +3,7 @@ function sum(from, to) {
     for (let i = from; i <= to; i++) {
         result += i;
     }
+    return result;
 }
 
 function compareSums(a, b, c, d) {
