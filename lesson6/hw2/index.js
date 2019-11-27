@@ -1,7 +1,12 @@
 function reverseArray(arr) {
     if (!Array.isArray(arr)) {
         return null;
-    } else {
-        return arr.reverse();
     }
+
+    let reversedArr = [];
+    for (let i = 0; i < arr.length; i++) {
+        reversedArr.unshift(arr[i]);
+    }
+
+    return reversedArr;
 }
