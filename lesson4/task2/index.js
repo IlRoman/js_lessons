@@ -8,3 +8,5 @@ do {
     }
     m++;
 } while (m <= n);
+
+console.log(result);
