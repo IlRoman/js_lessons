@@ -1,7 +1,7 @@
 let n = 25;
 let sum = '';
 
-for (let i = 0; i <= n; i++) {
+for (let i = 1; i <= n; i++) {
     sum += i + "";
 }
 
