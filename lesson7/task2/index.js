@@ -1,3 +1,4 @@
 function sortDesc(arr) {
-    return arr.sort((a, b) => b - a);
+    let x = [...arr];
+    return x.sort((a, b) => b - a);
 }
