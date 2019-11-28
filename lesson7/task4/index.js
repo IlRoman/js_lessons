@@ -1,5 +1,4 @@
 function getMessagesForBestStudents(allStudents, failedStudents) {
-    const passedStudents = allStudents.filter(name => !failedStudents.include(name));
-    const messages = passedStudents.map(name => 'Good job, ' + name);
-    return messages;
+    let passedStudents = allStudents.filter(name => !failedStudents.includes(name)).map(name => 'Good job, ' + name);
+    return passedStudents;
 }
