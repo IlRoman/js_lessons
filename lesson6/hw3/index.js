@@ -22,3 +22,4 @@ function sortDesc(array) {
         }
     }
     return array;
+}
