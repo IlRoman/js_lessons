@@ -1,8 +1,7 @@
 function getAdults(obj) {
-    let arr = [];
-    let x = Object.entries(obj).filter(x => x[1] >= 18).map(x => x[0]);
-    arr.push(x);
-    return arr;
+    let x = Object.entries(obj).filter(x => x[1] >= 18);
+    let y = x.map(a => a[0])
+    return y;
 }
 
 // console.log(getAdults({ 'John Doe': 19, 'Tom': 17, 'Bob': 18 }));
