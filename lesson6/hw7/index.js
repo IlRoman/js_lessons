@@ -1,5 +1,5 @@
 function checker(arr) {
-    arr.sort((a, b => a - b));
-    let x = arr[0] + arr[arr.length - 1];
-    return (x > 1000 ? true : false);
+    let min = Math.min(...arr)
+    let max = Math.max(...arr);
+    return (min + max > 1000 ? true : false);
 }
