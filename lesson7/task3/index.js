@@ -1,3 +1,4 @@
 function flatArray(arr) {
-    return arr.reduce((acc, num) => acc.concat(num), []);
+    let x = [...arr];
+    return x.reduce((acc, num) => acc.concat(num), []);
 }
