@@ -7,5 +7,3 @@ function multiRound(num) {
     arr.push(num.toFixed(2));
     return arr;
 }
-
-console.log(multiRound(-4.356));
