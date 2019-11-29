@@ -1,5 +1,5 @@
 function getParsedIntegers(arr) {
-    return arr.map(Number.parseInt)
+    return arr.map(x => Number.parseInt(x))
 }
 
 function getParsedIntegersV2(arr) {
