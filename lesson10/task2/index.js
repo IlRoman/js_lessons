@@ -3,7 +3,7 @@ function getParsedIntegers(arr) {
 }
 
 function getParsedIntegersV2(arr) {
-    return arr.map(x => x.parseInt)
+    return arr.map(x => parseInt(x))
 }
 
 function getParsedFloats(arr) {
