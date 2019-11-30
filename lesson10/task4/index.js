@@ -1,8 +1,11 @@
 function getMaxAbsoluteNumber(arr) {
+    if (!Array.isArray(arr)) return null;
     let result = [];
-    resulr.push();
+    result.push();
     return result;
 }
+
+console.log(getMaxAbsoluteNumber([-777, 3, -1, 45, -20]));
 
 // Создайте функцию, которая будет возвращать максимальное по модулю число
 
