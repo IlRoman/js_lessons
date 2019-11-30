@@ -6,10 +6,10 @@ function superRound(num, rounding) {
     for (let i = 0; i < rounding; i++) {
         x += '0';
     }
-    arr.push(Math.floor(num * x) / x);
-    arr.push(Math.round(num * x) / x);
-    arr.push(Math.ceil(num * x) / x);
-    arr.push(Math.trunc(num * x) / x);
-    arr.push(num.toFixed(x));
+    arr.push(Math.floor(num * +x) / +x);
+    arr.push(Math.round(num * +x) / +x);
+    arr.push(Math.ceil(num * +x) / +x);
+    arr.push(Math.trunc(num * +x) / +x);
+    arr.push(+num.toFixed(+x));
     return arr;
 }
