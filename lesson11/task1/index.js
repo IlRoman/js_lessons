@@ -1,4 +1,4 @@
-function splitText(str, len) {
+function splitString(str, len) {
     if (typeof str !== 'string') return null;
     if (len == undefined) len = 10;
     let arr = [];
