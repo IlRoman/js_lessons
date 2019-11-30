@@ -1,5 +1,6 @@
 function splitText(str, len = 10) {
     if (typeof str !== 'string') return null;
+    if (len == undefined) len = 10;
     let arr = [];
     let startPosition = 0;
     while (true) {
