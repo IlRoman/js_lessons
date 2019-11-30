@@ -5,6 +5,6 @@ function superRound(num, rounding) {
     arr.push(Math.round(num * +x) / +x);
     arr.push(Math.ceil(num * +x) / +x);
     arr.push(Math.trunc(num * +x) / +x);
-    arr.push(+num.toFixed(x));
+    arr.push(+num.toFixed(rounding));
     return arr;
 }
