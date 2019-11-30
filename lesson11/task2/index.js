@@ -1,9 +1,5 @@
 function sortContacts(arr, dir = true) {
     if (!Array.isArray(arr)) return null;
-    if (dir) {
-        return arr.sort((a, b) => { a.name.localeCompare(b.name) });
-    }
-    if (!dir) {
-        return arr.sort((a, b) => { b.name.localeCompare(a.name) });
-    }
+    let result = arr.sort((a, b) => dir ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name));
+    return result;
 }
