@@ -9,6 +9,9 @@ function splitString(str, num = 10) {
             break;
         }
         arr.push(result[0].toUpperCase() + result.slice(1));
+        while (arr[arr.length - 1].length < num) {
+            arr[arr.length - 1] += '.';
+        }
         start += num;
     }
     return arr;
