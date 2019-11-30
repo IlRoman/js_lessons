@@ -1,11 +1,6 @@
 function superRound(num, rounding) {
-    num = Number(num);
-    roundind = +rounding;
     let arr = [];
-    let x = '1';
-    for (let i = 0; i < rounding; i++) {
-        x += '0';
-    }
+    let x = Math.pow(10, rounding)
     arr.push(Math.floor(num * +x) / +x);
     arr.push(Math.round(num * +x) / +x);
     arr.push(Math.ceil(num * +x) / +x);
