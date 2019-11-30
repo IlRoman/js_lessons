@@ -1,17 +1,5 @@
 function getMaxAbsoluteNumber(arr) {
-    if (!Array.isArray(arr)) return null;
-    let result = [];
-    result.push();
-    return result;
+    if (!Array.isArray(arr) || arr.length == 0) return null;
+    let result = arr.map(x => Math.abs(x));
+    return Math.max(...result);
 }
-
-console.log(getMaxAbsoluteNumber([-777, 3, -1, 45, -20]));
-
-// Создайте функцию, которая будет возвращать максимальное по модулю число
-
-// Основные требования:
-// Функция должна называться getMaxAbsoluteNumber
-// Функция должна принимать массив чисел (могут быть дробные, отрицательные и положительные) как единственный аргумент
-// Функция должна вернуть максимальное по модулю число
-// Пример работы: [-777, 3, -1, 45, -20] => 777
-// Если передан не массив, или пустой массив, то вернуть null
