@@ -1,5 +1,6 @@
 function superRound(num, rounding) {
     num = Number(num);
+    roundind = +rounding;
     let arr = [];
     arr.push(Math.floor(num * rounding) / rounding);
     arr.push(Math.round(num * rounding) / rounding);
