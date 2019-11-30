@@ -8,7 +8,7 @@ function splitString(str, num = 10) {
         if (result.length === 0) {
             break;
         }
-        arr.push(result[0].toUpperCase() + result.slice(1));
+        arr.push(result);
         while (arr[arr.length - 1].length < num) {
             arr[arr.length - 1] += '.';
         }
