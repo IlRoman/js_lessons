@@ -3,5 +3,3 @@ export function fun(arr) {
     let x = arr.map(a => Math.abs(a));
     return Math.pow(Math.min(...x), 2);
 }
-
-console.log(fun('uhb'));
