@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/IlRoman/js_lessons/issues"
   },
-  "homepage": "https://github.com/IlRoman/js_lessons#readme"
+  "homepage": "https://github.com/IlRoman/js_lessons#readme",
+  "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4"
+  }
 }
