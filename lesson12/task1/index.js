@@ -8,6 +8,8 @@ function calc(a) {
             result = Number(+x[0] - +x[2]);
         case '*':
             result = Number(+x[0] * +x[2]);
+        case '/':
+            result = Number(+x[0] / +x[2]);
     }
     return a + ' = ' + result;
 }
