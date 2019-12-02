@@ -1,16 +1,16 @@
-import fun from './getMinSquaredNumber.js';
+import getMinSquaredNumber from './getMinSquaredNumber.js';
 
 it('should get', function () {
-    const result = fun([-777, 3, -2, 6, 45, -20]);
+    const result = getMinSquaredNumber([-777, 3, -2, 6, 45, -20]);
     expect(result).toEqual(4);
 });
 
 it('should get1', function () {
-    const result = fun([]);
+    const result = getMinSquaredNumber([]);
     expect(result).toEqual(null);
 });
 
 it('should get2', function () {
-    const result = fun('абв');
+    const result = getMinSquaredNumber('абв');
     expect(result).toEqual(null);
 });
