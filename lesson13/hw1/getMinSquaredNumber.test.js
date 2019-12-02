@@ -1,4 +1,4 @@
-import getMinSquaredNumber from './getMinSquaredNumber.js';
+import { getMinSquaredNumber } from './getMinSquaredNumber.js';
 
 it('should get1', function () {
     const result = getMinSquaredNumber([]);
