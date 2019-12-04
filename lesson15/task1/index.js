@@ -1,6 +1,6 @@
-let count = 0;
 
-export function makeCounter() {
+function makeCounter() {
+    let count = 0;
     return function () {
         return count++;
     }
@@ -9,6 +9,6 @@ export function makeCounter() {
 const counter1 = makeCounter();
 const counter2 = makeCounter();
 
-// console.log(counter());
-// console.log(counter());
-// console.log(counter());
+// console.log(counter1());
+// console.log(counter1());
+// console.log(counter2());
