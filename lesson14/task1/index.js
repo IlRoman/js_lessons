@@ -1,4 +1,4 @@
-let message = 'Just learn it';
+let message = 'Just learn it!';
 
 export function sendMessage(name) {
     console.log(`${name}, ${message} Your ${sender}`);
