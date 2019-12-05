@@ -1,4 +1,4 @@
-let timer = {
+export let timer = {
     secondsPassed: 0,
     minsPassed: 0,
     timerId: 0,
