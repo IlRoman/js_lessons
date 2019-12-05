@@ -1,4 +1,4 @@
-function createArrayOfFunctions(num) {
+export function createArrayOfFunctions(num) {
     if (num !== +num) return null;
     let arr = [];
     if (!num) return arr;
