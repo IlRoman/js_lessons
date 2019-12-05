@@ -1,4 +1,4 @@
-export function createLogger() {
+function createLogger() {
     let arr = [];
 
     return {
@@ -33,23 +33,22 @@ export function createLogger() {
         },
 
         getRecords: function (string) {
-            if (!string) {
-                arr.sort((a, b) => b.dateTime - a.dateTime)
-                return arr;
+            if (!string || typeof string != 'string') {
+                arr.sort((a, b) => b.dateTime - a.dateTime);
             } else {
-                return arr;
+                return arr.filter(x => x.type == string)
+                    .sort((a, b) => b.dateTime - a.dateTime);
             }
         },
     }
 }
 
-// let counter = createLogger();
+let counter = createLogger();
 
-// counter.warn('фбв');
-// counter.error('где');
-// counter.log('жзи');
-// console.log(counter.getRecords());
-
+counter.warn('warn');
+counter.log('error');
+counter.log('log');
+console.log(counter.getRecords('log'));
 
 // createLogger должна вернуть логгер с методами:
 // warn - принимает ворнинг в виде строки и записывает в память
