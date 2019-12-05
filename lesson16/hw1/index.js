@@ -1,7 +1,7 @@
-export function createArrayOfFunctions(num) {
-    if (num !== +num) return null;
+function createArrayOfFunctions(num) {
     let arr = [];
     if (!num) return arr;
+    if (typeof num !== 'number') return null;
     for (let i = 0; i < num; i++) {
         arr.push(function () {
             return i;
@@ -10,4 +10,4 @@ export function createArrayOfFunctions(num) {
     return arr;
 }
 
-// console.log(createArrayOfFunctions(5));
+// console.log(createArrayOfFunctions('lkmgtv'));
