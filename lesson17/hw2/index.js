@@ -13,7 +13,8 @@ export let timer = {
     },
 
     getTime() {
-        return `${this.minsPassed}:${this.secondsPassed}`;
+        if (this.secondsPassed < 10) return `${this.minsPassed}:0${this.secondsPassed}`
+        else return `${this.minsPassed}:${this.secondsPassed}`;
     },
 
     stopTimer() {
