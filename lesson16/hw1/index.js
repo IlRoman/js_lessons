@@ -10,4 +10,4 @@ function createArrayOfFunctions(num) {
     return arr;
 }
 
-console.log(createArrayOfFunctions(5));
+// console.log(createArrayOfFunctions(5));
