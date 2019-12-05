@@ -1,4 +1,4 @@
-export default var foo = 1;
+export default foo = 1;
 
 function bar() {
     if (!foo) {
