@@ -1,7 +1,10 @@
-arr = [1, 2, 3];
+let arr = [];
 
 for (let i = 0; i < 10; i++) {
-    console.log(i);
+    arr[i] = function () {
+        console.log(i);
+        return i;
+    }
 }
 
 export { arr };
