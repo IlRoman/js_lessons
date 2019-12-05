@@ -1,4 +1,4 @@
-let event = {
+export let event = {
     message: 'Welcome to the party',
     guests: [
         { name: 'John', age: 18, email: 'example@server.com' },
