@@ -1,4 +1,4 @@
-let wallet = {
+export let wallet = {
     transactions: [2, 3, 4, 5],
     getMax() {
         return Math.max(...this.transactions);
@@ -8,5 +8,5 @@ let wallet = {
     },
 }
 
-console.log(wallet.getMax());
-console.log(wallet.getMin());
+// console.log(wallet.getMax());
+// console.log(wallet.getMin());
