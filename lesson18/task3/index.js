@@ -1,4 +1,4 @@
-function sumOfSquares(...args) {
+export function sumOfSquares(...args) {
     let arr = [...args];
     let result = [];
     for (let i = 0; i < arr.length; i++) {
