@@ -24,8 +24,8 @@ export class User {
     };
 
     createEmpty() {
-        this.name;
-        this.age;
+        delete this.name;
+        delete this.age;
     };
 }
 
