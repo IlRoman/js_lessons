@@ -1,4 +1,4 @@
-export class User {
+class User {
     constructor(name, age) {
         this.name = name;
         this.age = age;
@@ -24,8 +24,8 @@ export class User {
     };
 
     createEmpty() {
-        this.name = '';
-        this.age = '';
+        this.name;
+        this.age;
     };
 }
 
