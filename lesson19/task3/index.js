@@ -4,7 +4,7 @@ export let user = {
     get fullName() {
         return `${this.firstName} ${this.lastName}`;
     },
-    setfullName(value) {
+    set fullName(value) {
         const [firstName, lastName] = value.split(' ');
         this.firstName = firstName;
         this.lastName = lastName;
