@@ -5,11 +5,8 @@ export class User {
     };
 
     static createEmpty() {
-        return {
-            name: '',
-            age: '',
-        }
-    };
+        return new User('', '')
+    }
 
     sayHi() {
         console.log(`Hi, I am ${this.name}`);
@@ -31,10 +28,10 @@ export class User {
     };
 }
 
-// const user = new User('Tom', 17);
-// console.log(user);
-// console.log(user.setAge(-2))
-// console.log(user.setAge(0))
-// console.log(user.setAge(25));
-// let user2 = User.createEmpty();
-// console.log(user2);
+const user = new User('Tom', 17);
+console.log(user);
+console.log(user.setAge(-2))
+console.log(user.setAge(0))
+console.log(user.setAge(25));
+let user2 = User.createEmpty();
+console.log(user2);
