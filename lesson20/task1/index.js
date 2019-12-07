@@ -1,7 +1,14 @@
-export class User {
+class User {
     constructor(name, age) {
         this.name = name;
         this.age = age;
+    };
+
+    static createEmpty() {
+        return {
+            name: '',
+            age: '',
+        }
     };
 
     sayHi() {
@@ -22,11 +29,6 @@ export class User {
             return age;
         }
     };
-
-    createEmpty() {
-        delete this.name;
-        delete this.age;
-    };
 }
 
 // const user = new User('Tom', 17);
@@ -34,5 +36,5 @@ export class User {
 // console.log(user.setAge(-2))
 // console.log(user.setAge(0))
 // console.log(user.setAge(25));
-// user.createEmpty();
-// console.log(user);
+// let user2 = User.createEmpty();
+// console.log(user2);
