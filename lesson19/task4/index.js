@@ -1,4 +1,4 @@
-export function User(name, age) {
+function User(name, age) {
     this.name = name;
     this.age = age;
 }
@@ -23,4 +23,6 @@ User.prototype.setAge = function (age) {
 };
 
 // const user = new User('Tom', 17);
-// console.log(user);
+//console.log(user.setAge(-2))
+//console.log(user.setAge(0))
+// console.log(user.setAge(25));
