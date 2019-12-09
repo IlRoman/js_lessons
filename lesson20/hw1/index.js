@@ -15,7 +15,7 @@ export class Order {
 
     confirmOrder() {
         this.isConfirmed = true;
-        this.dateCreated = new Date();
+        this.dateConfirmed = new Date();
     }
 
     isValidType(Buy, Sell) {
