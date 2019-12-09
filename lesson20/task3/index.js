@@ -1,4 +1,4 @@
-class Wallet {
+export class Wallet {
     _balance = 0;
 
     getBalance() {
