@@ -9,14 +9,15 @@ export class Wallet {
         this._balance += num;
     }
 
-    withdraw(num) {
-        if (num > this._balance) {
+    withdraw(amount) {
+        if (amount > this._balance) {
             console.log('No enough funds');
             return;
         }
-        this.balance -= num;
+        this.balance -= amount;
     }
 }
+
 
 // let x = new Wallet();
 
