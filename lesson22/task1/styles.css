@@ -22,11 +22,11 @@
 }
 
 .rect_p {
-  margin: auto;
   width: 200px;
+  height: 200px;
+  margin: auto;
   display: flex;
   flex-direction: column;
-  height: 200px;
   background-color: aqua;
 }
 
