@@ -20,6 +20,15 @@ let logGreyP = logTarget.bind(null, 'P', 'grey');
 let logGreenSpan = logTarget.bind(null, 'SPAN', 'green');
 let logGreySpan = logTarget.bind(null, 'SPAN', 'grey');
 
+divElem.addEventListener('click', logGreyDiv, true);
+divElem.addEventListener('click', logGreenDiv);
+
+pElem.addEventListener('click', logGreyP, true);
+pElem.addEventListener('click', logGreenP);
+
+spanElem.addEventListener('click', logGreySpan, true);
+spanElem.addEventListener('click', logGreenSpan);
+
 clearBtn.addEventListener('click', function () {
     let eventsList = document.querySelector('.events-list');
     eventsList.innerHTML = '';
