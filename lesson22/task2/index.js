@@ -41,14 +41,15 @@ const renderListItems = listItems => {
 
     for (let i = 0; i < check.length; i++) {
         check[i].addEventListener('click', function () {
-            for (let i = 0; i < tasks.length; i++) {
-                if (check[i].checked == true) {
-                    tasks[i].done = true;
-                }
-                let allLi = document.querySelector('.list');
-                allLi.innerHTML = '';
-                renderListItems(tasks);
+            if (check[i].checked == true) {
+                tasks[i].done = true;
             }
+            if (check[i].checked == false) {
+                tasks[i].done = false;
+            }
+            let allLi = document.querySelector('.list');
+            allLi.innerHTML = '';
+            renderListItems(tasks);
         })
     }
 }
