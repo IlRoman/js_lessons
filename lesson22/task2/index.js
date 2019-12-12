@@ -35,6 +35,7 @@ const renderListItems = listItems => {
         });
 
     listElem.append(...listItemsElems);
+
     let check = document.querySelectorAll('.list__item-checkbox');
 
     for (let i = 0; i < check.length; i++) {
