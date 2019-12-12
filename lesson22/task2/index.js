@@ -9,7 +9,7 @@ const tasks = [
 let createTaskBtn = document.querySelector('.create-task-btn');
 createTaskBtn.addEventListener('click', function () {
     let task_input = document.querySelector('.task-input');
-    tasks.push({ text: task_input.value, done: false, });
+    tasks.unshift({ text: task_input.value, done: false, });
     let allLi = document.querySelector('.list');
     allLi.innerHTML = '';
     renderListItems(tasks);
