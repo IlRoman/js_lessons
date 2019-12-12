@@ -12,6 +12,7 @@ createTaskBtn.addEventListener('click', function () {
     tasks.unshift({ text: task_input.value, done: false, });
     let allLi = document.querySelector('.list');
     allLi.innerHTML = '';
+    task_input.value = '';
     renderListItems(tasks);
 });
 
