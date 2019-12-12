@@ -36,21 +36,20 @@ const renderListItems = listItems => {
         });
 
     listElem.append(...listItemsElems);
+    let check = document.querySelectorAll('.list__item-checkbox');
+
+    for (let i = 0; i < check.length; i++) {
+        check[i].addEventListener('click', function () {
+            for (let i = 0; i < tasks.length; i++) {
+                if (check[i].checked == true) {
+                    tasks[i].done = true;
+                }
+                let allLi = document.querySelector('.list');
+                allLi.innerHTML = '';
+                renderListItems(tasks);
+            }
+        })
+    }
 }
 
 renderListItems(tasks);
-
-let check = document.querySelectorAll('.list__item-checkbox');
-
-for (let i = 0; i < check.length; i++) {
-    check[i].addEventListener('click', function () {
-        for (let i = 0; i < tasks.length; i++) {
-            if (check[i].checked) {
-                tasks[i].done = true;
-            } else tasks[i].done = false;
-            let allLi = document.querySelector('.list');
-            allLi.innerHTML = '';
-            renderListItems(tasks);
-        }
-    })
-}
