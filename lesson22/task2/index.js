@@ -1,10 +1,10 @@
 const tasks = [
-    { text: 'Buy milk', done: false },
-    { text: 'Pick up Tom from airport', done: false },
-    { text: 'Visit party', done: false },
-    { text: 'Visit doctor', done: true },
-    { text: 'Buy meat', done: true },
-]
+    { text: 'Buy milk', done: false, date: new Date(), id: Math.trunc(Math.random() * 1000), },
+    { text: 'Pick up Tom from airport', done: false, date: new Date(), id: Math.trunc(Math.random() * 100), },
+    { text: 'Visit party', done: false, date: new Date(), id: Math.trunc(Math.random() * 1000), },
+    { text: 'Visit doctor', done: true, date: new Date(), id: Math.trunc(Math.random() * 1000), },
+    { text: 'Buy meat', done: true, date: new Date(), id: Math.trunc(Math.random() * 1000), },
+];
 
 let createTaskBtn = document.querySelector('.create-task-btn');
 createTaskBtn.addEventListener('click', function () {
@@ -20,8 +20,9 @@ const renderListItems = listItems => {
     const listElem = document.querySelector('.list');
 
     const listItemsElems = listItems
+        .sort((a, b) => a.date - b.date)
         .sort((a, b) => a.done - b.done)
-        .map(({ text, done }) => {
+        .map(({ text, done, id }) => {
             const listItemElem = document.createElement('li');
             listItemElem.classList.add('list__item');
             if (done) {
@@ -29,6 +30,7 @@ const renderListItems = listItems => {
             }
             const checkboxElem = document.createElement('input');
             checkboxElem.setAttribute('type', 'checkbox');
+            checkboxElem.setAttribute('data-id', id);
             checkboxElem.checked = done;
             checkboxElem.classList.add('list__item-checkbox');
             listItemElem.append(checkboxElem, text);
@@ -39,19 +41,20 @@ const renderListItems = listItems => {
 
     let check = document.querySelectorAll('.list__item-checkbox');
 
-    for (let i = 0; i < check.length; i++) {
-        check[i].addEventListener('click', function () {
-            if (check[i].checked == true) {
-                tasks[i].done = true;
-            }
-            if (check[i].checked == false) {
-                tasks[i].done = false;
-            }
-            let allLi = document.querySelector('.list');
-            allLi.innerHTML = '';
-            renderListItems(tasks);
-        })
-    }
-}
+    const onToggleTask = element => {
+        const Checkbox = element.target.classList.contains('list__item-checkbox');
+        if (!Checkbox) {
+            return;
+        }
+        const taskData = tasks.find(x => x.id == element.target.dataset.id);
+        Object.assign(taskData, { done: element.target.checked });
+        let allLi = document.querySelector('.list');
+        allLi.innerHTML = '';
+        renderListItems(tasks);
+    };
+
+    const todoListElem = document.querySelector('.list');
+    todoListElem.addEventListener('click', onToggleTask);
+};
 
 renderListItems(tasks);
