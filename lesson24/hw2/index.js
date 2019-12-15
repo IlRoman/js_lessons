@@ -9,16 +9,17 @@ export const studentsBirthDays = (students) => {
         return x;
     })
 
-    console.log(ArrOfstudents);
-
     ArrOfstudents.sort((a, b) => b.birthDate - a.birthDate);
 
     for (let i = 0; i < ArrOfstudents.length; i++) {
-        if (!result.hasOwnProperty(`${ArrOfstudents[i].birthDate[1]}`)) result[`${ArrOfstudents[i].birthDate[1]}`] = [];
-        result[`${ArrOfstudents[i].birthDate[1]}`].push(ArrOfstudents[i].name);
+        let nameOfMonth = ArrOfstudents[i].birthDate;
+        nameOfMonth = (nameOfMonth + '').split(' ');
+        let nameOfProperty = nameOfMonth[1] + '';
+        if (!result.hasOwnProperty(nameOfProperty)) result[nameOfProperty] = [];
+        result[nameOfProperty].push(ArrOfstudents[i].name);
     }
 
-    return ArrOfstudents;
+    return result;
 }
 
-// console.log(studentsBirthDays([{ name: 'Tom', birthDate: '06/26/1992' }, { name: 'Roman', birthDate: '06/16/1992' }]))
+console.log(studentsBirthDays([{ name: 'Tom', birthDate: '03/26/1992' }, { name: 'Roman', birthDate: '06/16/1992' }]));
