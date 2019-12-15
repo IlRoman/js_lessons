@@ -11,7 +11,7 @@ export function getDiff(startDate, endDate) {
     let hoursDiff = Math.trunc(hoursRemain / oneHour);
     let minutesRemain = hoursRemain - (hoursDiff * oneHour);
     let minutesDiff = Math.trunc(minutesRemain / oneMinute);
-    let secondsRemain = minutesRemain - (minutesDiff * oneSecond);
+    let secondsRemain = minutesRemain - (minutesDiff * oneMinute);
     let secondsDiff = Math.trunc(secondsRemain / oneSecond);
 
     return `${daysDiff}d ${hoursDiff}h ${minutesDiff}m ${secondsDiff}s`;
