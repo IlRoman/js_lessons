@@ -1,5 +1,5 @@
 export function getDiff(startDate, endDate) {
-    let timediff = Math.abs(startDate - endDate);
+    let timediff = Math.abs(endDate - startDate);
 
     let oneDay = 1000 * 60 * 60 * 24;
     let oneHour = 1000 * 60 * 60;
