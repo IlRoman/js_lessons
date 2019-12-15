@@ -20,8 +20,8 @@ const renderListItems = listItems => {
     const listElem = document.querySelector('.list');
 
     const listItemsElems = listItems
-        .sort((a, b) => a.done - b.done)
         .sort((a, b) => b.date - a.date)
+        .sort((a, b) => a.done - b.done)
         .map(({ text, done, id }) => {
             const listItemElem = document.createElement('li');
             listItemElem.classList.add('list__item');
