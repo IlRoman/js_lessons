@@ -9,7 +9,7 @@ export const studentsBirthDays = (students) => {
         return x;
     })
 
-    ArrOfstudents.sort((a, b) => b.birthDate - a.birthDate);
+    ArrOfstudents.sort((a, b) => a.birthDate - b.birthDate);
 
     for (let i = 0; i < ArrOfstudents.length; i++) {
         let nameOfMonth = ArrOfstudents[i].birthDate;
