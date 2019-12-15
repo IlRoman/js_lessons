@@ -1,5 +1,5 @@
 export function getGreenwichTime(date) {
-    formatter.format(date);
+    return formatter.format(date);
 }
 
 export const formatter = new Intl.DateTimeFormat('en', {
