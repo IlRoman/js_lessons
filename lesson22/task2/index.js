@@ -6,11 +6,12 @@ const tasks = [
     { text: 'Buy meat', done: true, date: new Date(), id: Math.trunc(Math.random() * 1000), },
 ];
 
+let allLi = document.querySelector('.list');
+
 let createTaskBtn = document.querySelector('.create-task-btn');
 createTaskBtn.addEventListener('click', function () {
     let task_input = document.querySelector('.task-input');
-    tasks.unshift({ text: task_input.value, done: false, });
-    let allLi = document.querySelector('.list');
+    tasks.unshift({ text: task_input.value, done: false, id: Math.trunc(Math.random() * 1000), date: new Date() });
     allLi.innerHTML = '';
     task_input.value = '';
     renderListItems(tasks);
@@ -20,7 +21,7 @@ const renderListItems = listItems => {
     const listElem = document.querySelector('.list');
 
     const listItemsElems = listItems
-        .sort((a, b) => a.date - b.date)
+        .sort((a, b) => b.date - a.date)
         .sort((a, b) => a.done - b.done)
         .map(({ text, done, id }) => {
             const listItemElem = document.createElement('li');
@@ -39,8 +40,6 @@ const renderListItems = listItems => {
 
     listElem.append(...listItemsElems);
 
-    let check = document.querySelectorAll('.list__item-checkbox');
-
     const onToggleTask = element => {
         const Checkbox = element.target.classList.contains('list__item-checkbox');
         if (!Checkbox) {
@@ -48,7 +47,7 @@ const renderListItems = listItems => {
         }
         const taskData = tasks.find(x => x.id == element.target.dataset.id);
         Object.assign(taskData, { done: element.target.checked });
-        let allLi = document.querySelector('.list');
+        Object.assign(taskData, { date: new Date() });
         allLi.innerHTML = '';
         renderListItems(tasks);
     };
