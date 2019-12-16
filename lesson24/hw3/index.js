@@ -47,7 +47,6 @@ const renderListItems = listItems => {
         }
         const taskData = tasks.find(x => x.id == element.target.dataset.id);
         Object.assign(taskData, { done: element.target.checked });
-        Object.assign(taskData, { date: new Date() });
         allLi.innerHTML = '';
         renderListItems(tasks);
     };
