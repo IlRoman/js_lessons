@@ -6,11 +6,12 @@ const tasks = [
     { text: 'Buy meat', done: true, date: new Date(), id: Math.trunc(Math.random() * 1000), },
 ];
 
+let allLi = document.querySelector('.list');
+
 let createTaskBtn = document.querySelector('.create-task-btn');
 createTaskBtn.addEventListener('click', function () {
     let task_input = document.querySelector('.task-input');
     tasks.unshift({ text: task_input.value, done: false, id: Math.trunc(Math.random() * 1000) });
-    let allLi = document.querySelector('.list');
     allLi.innerHTML = '';
     task_input.value = '';
     renderListItems(tasks);
@@ -47,7 +48,6 @@ const renderListItems = listItems => {
         const taskData = tasks.find(x => x.id == element.target.dataset.id);
         Object.assign(taskData, { done: element.target.checked });
         Object.assign(taskData, { date: new Date() });
-        let allLi = document.querySelector('.list');
         allLi.innerHTML = '';
         renderListItems(tasks);
     };
