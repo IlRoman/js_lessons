@@ -41,8 +41,11 @@ const formElem = document.querySelector('.login-form');
 
 const onFormSubmit = event => {
     event.preventDefault();
-    const formData = [...new FormData(formElem)]
-        .reduce((acc, [field, value]) => ({ ...acc, [field]: value }), {});
+    // const formData = [...new FormData(formElem)].reduce((acc, [field, value]) => ({ ...acc, [field]: value }), {});
+    let dataObj = {};
+    const formData = [...new FormData(formElem)].map(x => dataObj[x[0]] = x[1]);
+    console.log(formData);
+
     alert(JSON.stringify(formData));
 };
 
