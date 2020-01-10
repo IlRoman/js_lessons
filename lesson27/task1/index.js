@@ -3,9 +3,7 @@ export function getLocalStorageData() {
         .reduce((acc, [key, value]) => {
             return {
                 ...acc,
-                [key]: value,
+                [key]: JSON.parse(value),
             }
         }, {});
 }
-
-getLocalStorageData();
