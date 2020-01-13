@@ -7,4 +7,7 @@ export function maxFibonacci(n) {
         a = b;
         b = c;
     }
+    return b;
 }
+
+console.log(maxFibonacci(3));
