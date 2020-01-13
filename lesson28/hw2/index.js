@@ -5,15 +5,15 @@ export function maxFibonacci(n) {
         arr.push(fib(i))
     }
 
-    function fib(n) {
-        return n <= 1 ? n : fib(n - 1) + fib(n - 2);
-    }
-
-    let result = 0;
+    let result = 1;
     for (let i = 0; i < arr.length; i++) {
         if (arr[i] > result && arr[i] < n) result = arr[i];
     }
     return result;
+}
+
+function fib(n) {
+    return n <= 1 ? n : fib(n - 1) + fib(n - 2);
 }
 
 console.log(maxFibonacci(15));
