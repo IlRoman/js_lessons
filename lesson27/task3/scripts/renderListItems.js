@@ -1,22 +1,6 @@
-let tasksList = JSON.parse(localStorage.getItem('tasksList'), []);
-
-let allLi = document.querySelector('.list');
-let createTaskBtn = document.querySelector('.create-task-btn');
-
-createTaskBtn.addEventListener('click', function () {
-    let task_input = document.querySelector('.task-input');
-
-    tasksList.push({ text: task_input.value, done: false, id: Math.trunc(Math.random() * 1000) })
-    localStorage.setItem('tasksList', JSON.stringify(tasksList));
-
-    allLi.innerHTML = '';
-    task_input.value = '';
-    renderListItems(tasksList);
-});
-
-const renderListItems = tasksList => {
-
+export const renderListItems = tasksList => {
     const listElem = document.querySelector('.list');
+    listElem.innerHTML = '';
 
     const listItemsElems = tasksList
         .sort((a, b) => b.date - a.date)
@@ -45,7 +29,7 @@ const renderListItems = tasksList => {
         }
         const taskData = tasksList.find(x => x.id == element.target.dataset.id);
         Object.assign(taskData, { done: element.target.checked });
-        allLi.innerHTML = '';
+        listElem.innerHTML = '';
         renderListItems(tasksList);
         localStorage.setItem('tasksList', JSON.stringify(tasksList));
     };
@@ -53,5 +37,3 @@ const renderListItems = tasksList => {
     const todoListElem = document.querySelector('.list');
     todoListElem.addEventListener('click', onToggleTask);
 };
-
-renderListItems(tasksList);

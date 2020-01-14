@@ -17,17 +17,17 @@ const onCounterChange = e => {
 
     counterValueElem.textContent = newValue;
 }
-
 container.addEventListener('click', onCounterChange);
+
+
 
 const onStorageChange = e => {
     counterValueElem.textContent = e.newValue
 }
-
 window.addEventListener('storage', onStorageChange);
+
 
 const onDocumentLoaded = () => {
     counterValueElem.textContent = localStorage.getItem('counterValue') || 0;
 }
-
 document.addEventListener('DOMContentLoaded', onDocumentLoaded);
