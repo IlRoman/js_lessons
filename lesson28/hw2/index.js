@@ -1,13 +1,24 @@
-export function maxFibonacci(n) {
-    let a = 1;
-    let b = 1;
-    for (let i = 3; i <= n; i++) {
-        let c = a + b;
-        if (c >= n) return b
-        a = b;
-        b = c;
+function fibonacci(num) {
+    if (num < 1) {
+        return 1;
     }
-    return b;
+    return fibonacci(num - 1) + fibonacci(num - 2);
+};
+
+export function maxFibonacci(input) {
+    let index = 0;
+
+    let maxFib = 0;
+
+    while (true) {
+        let fib = fibonacci(index);
+        if (fib <= input) {
+            maxFib = fib;
+            index++;
+        } else {
+            return maxFib;
+        }
+    }
 }
 
-console.log(maxFibonacci(13));
+console.log(maxFibonacci(0.1));
