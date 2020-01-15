@@ -13,11 +13,11 @@ export function addImage(imgSrc, callback) {
     imgElem.addEventListener('load', onImageLoaded);
 
     imgElem.addEventListener('error', () => callback('Image load failed'));
-};
 
-function callback(error) {
-    if (error) {
-        console.log(error);
-        return;
+    function callback(error) {
+        if (error) {
+            console.log(error);
+            return;
+        }
     }
-}
+};
