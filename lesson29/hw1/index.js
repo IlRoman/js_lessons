@@ -5,7 +5,7 @@ function randomInteger(min, max) {
 
 export const requestUserData = (userId, callback) => {
     if (userId === 'broken') {
-        setTimeout(() => callback(null, 'Failed to load user data'), randomInteger);
+        setTimeout(() => callback(null, 'Failed to load user data'), randomInteger(1, 3));
         return;
     }
 
@@ -14,7 +14,7 @@ export const requestUserData = (userId, callback) => {
         age: 17,
         userId: userId,
         email: `${userId}@example.com`,
-    }), randomInteger);
+    }), randomInteger(1, 3));
 };
 
 const onFormUserData = (firstArg, data) => {
