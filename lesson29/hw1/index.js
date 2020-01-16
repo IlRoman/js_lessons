@@ -1,6 +1,6 @@
 function randomInteger(min, max) {
     let rand = min + Math.random() * (max + 1 - min);
-    return Math.floor(rand);
+    return Math.floor(rand) * 1000;
 }
 
 export const requestUserData = (userId, callback) => {
