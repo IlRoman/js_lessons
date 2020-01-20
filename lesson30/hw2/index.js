@@ -1,4 +1,4 @@
-export const addImage = (imgSrc, callback) => {
+const addImage = (imgSrc, callback) => {
     const imgElem = document.createElement("img");
     imgElem.setAttribute('alt', 'My Photo');
     imgElem.src = imgSrc;
@@ -36,7 +36,7 @@ export const addImageV2 = imgSrc => {
 };
 
 addImageV2(imgSrc)
-    // .then(data => console.log(data))
+    .then(data => console.log(data))
     .catch(error => console.log(error));
 
 // Напишите функцию, которая добавит картинку на страницу и вернет размеры этой картинки
