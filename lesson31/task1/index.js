@@ -17,7 +17,7 @@ export function requestUserData(userId) {
     })
 }
 
-requestUserData('broken')
+requestUserData('userid777')
     .then(data => console.log(data))
     .catch(error => console.log(error))
     .finally(() => console.log('finally'));
