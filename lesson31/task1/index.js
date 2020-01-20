@@ -9,7 +9,7 @@ export function requestUserData(userId) {
                 resolve({
                     name: 'John',
                     age: 17,
-                    userId: 'userid777',
+                    userId,
                     email: 'userid777@example.com',
                 })
             }, 1000);
@@ -17,10 +17,10 @@ export function requestUserData(userId) {
     })
 }
 
-requestUserData('userid777')
-    .then(data => console.log(data))
-    .catch(error => console.log(error))
-    .finally(() => console.log('finally'));
+// requestUserData('userid777')
+//     .then(data => console.log(data))
+//     .catch(error => console.log(error))
+//     .finally(() => console.log('finally'));
 
 
 // Напишите функцию, которая принимает id пользователя и устанавливает проимс в определенное состояние
