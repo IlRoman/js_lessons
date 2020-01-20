@@ -18,20 +18,3 @@ export const addImageV2 = imgSrc => {
 addImageV2(imgSrc)
     .then(data => console.log(data))
     .catch(error => console.log(error));
-
-// Напишите функцию, которая добавит картинку на страницу и вернет размеры этой картинки
-
-// Основные требования:
-// Код файла addImage.js находиться в редакторе ниже.
-// Из файла index.js экспортируйте функцию под именем addImageV2
-// addImageV2 должна промисифицировать ф-цию addImage. Это означает, что нужно создать обертку над addImage,
-// которая будет возвращать промис и использовать в своей реализации ф-цию addImage, которая работает с коллбэками.
-// Сигнатура: addImageV2('https://server.com/image.png'), где единственный аргумент - адрес изображения
-// addImageV2 должна добавить в элемент с классом page картинку с указанным адресом
-
-// Ф-ция addImageV2 должна вернуть Promise, который зарезолвит размеры картинки (объект { width: 200, height: 100 },
-// где 200 х 100 - размеры загруженной картинки) в случае успеха. Или отклонит промис со строкой 'Image load failed', если произойдет ошибка при загрузке картинки
-// Пример работы
-//             addImageV2('https://server.com/image.png')
-//                 .then(data => console.log(data)); // { width: 200, height: 100 }
-//                 .catch(error => console.log(error)); // 'Image load failed'
