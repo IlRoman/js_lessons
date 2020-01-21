@@ -25,6 +25,7 @@ function findMostActiveUsers(data) {
     // data = data.reduce((acc, currentValue) => {
     //     return [...acc, currentValue.commit.author,] });
 
+    // здесь снова ошибка. По началу работало а потом вдруг перестало...
     let arrOfCommits = [];
     for (let i = 0; i < data.length; i++) {
         let obj = { ['name']: data[i].commit.author.name, ['count']: 1, ['email']: data[i].commit.author.email };
