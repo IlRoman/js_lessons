@@ -14,28 +14,13 @@ function renderUserData(userData) {
 }
 
 const fetchUserData = userName => {
+    // return fetch(`https://api.github.com/users/IlRoman`)
     return fetch(`https://api.github.com/users/${userName}`)
         .then(response => response.json())
         .then(data => renderUserData(data));
 };
 
-export function getMostActiveDevs(arrOfUsers) {
-    let result = { count: 0 };
-    for (let i = 0; i < arrOfUsers.length; i++) {
-        if (arrOfUsers[i].count > result.count) {
-            result = arrOfUsers[i];
-        }
-    }
-
-    return new Promise((resolve, reject) => {
-        function callback() {
-            resolve(result);
-        }
-        fetchUserData(result.name, callback);
-    });
-};
-
-function findMostActiveUsers(data) {
+function findMostActiveUsers(data, days) {
     let userData = data.map(({ commit: { author: { email, date, name } } }) => ({ email, date, name }));
 
     // Сортировка по имени
@@ -64,22 +49,30 @@ function findMostActiveUsers(data) {
         }
     }
 
-    getMostActiveDevs(arrOfUsers)
-        .then(data => console.log(data))
-    //  .catch(error = console.log(error));
+    let result = { count: 0 };
+    for (let i = 0; i < arrOfUsers.length; i++) {
+        if (arrOfUsers[i].count > result.count) {
+            result = arrOfUsers[i];
+        }
+    }
+    fetchUserData(result.name);
 }
 
-const fetchArrOfCommits = (userId, repoId) => {
-    return fetch(`https://api.github.com/repos/${userId}/${repoId}/commits?per_page=100`)
-        .then(response => response.json())
-        .then(data => findMostActiveUsers(data));
+export function getMostActiveDevs(days, userId, repoId) {
+    const fetchArrOfCommits = (userId, repoId) => {
+        return fetch(`https://api.github.com/repos/${userId}/${repoId}/commits?per_page=100`)
+            .then(response => response.json())
+            .then(data => findMostActiveUsers(data, days));
+    };
+    fetchArrOfCommits(userId, repoId);
 };
 
 const onSearchArrOfCommits = () => {
-    // IlRoman calendar
-    const userName = userNameInputEelem.value.split(' ')[0];
-    const repoId = userNameInputEelem.value.split(' ')[1];
-    fetchArrOfCommits(userName, repoId)
+    //15 IlRoman calendar
+    const days = userNameInputEelem.value.split(' ')[0];
+    const userName = userNameInputEelem.value.split(' ')[1];
+    const repoId = userNameInputEelem.value.split(' ')[2];
+    getMostActiveDevs(days, userName, repoId)
 };
 
 showUserBtnElem.addEventListener('click', onSearchArrOfCommits);
