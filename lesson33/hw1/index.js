@@ -14,7 +14,6 @@ function renderUserData(userData) {
 }
 
 const fetchUserData = userName => {
-    // return fetch(`https://api.github.com/users/IlRoman`)
     return fetch(`https://api.github.com/users/${userName}`)
         .then(response => response.json())
         .then(data => renderUserData(data));
@@ -36,7 +35,7 @@ function findMostActiveUsers(data, days) {
         return 0;
     })
 
-    // считаем количество коммитов
+    // вычисляем уникальных юзеров и добавляем им свойство count с колличеством их коммитов
     let arrOfUsers = [];
     let count = 0;
     for (let i = 0; i < sortedData.length; i++) {
@@ -53,7 +52,7 @@ function findMostActiveUsers(data, days) {
         }
     }
 
-    // находим самого активного
+    // находим самого активного юзера
     let result = { count: 0 };
     for (let i = 0; i < arrOfUsers.length; i++) {
         if (arrOfUsers[i].count > result.count) {
@@ -73,13 +72,13 @@ export function getMostActiveDevs(days, userId, repoId) {
 };
 
 const onSearchArrOfCommits = () => {
-    //15 IlRoman calendar
     const days = userNameInputEelem.value.split(' ')[0];
     const userName = userNameInputEelem.value.split(' ')[1];
     const repoId = userNameInputEelem.value.split(' ')[2];
     getMostActiveDevs(days, userName, repoId)
 };
 
+// вводить в инпут в порядке: дата, имя юзера, название репозитория (с пробелами)
 showUserBtnElem.addEventListener('click', onSearchArrOfCommits);
 
-getMostActiveDevs('15', 'IlRoman', 'calendar')
+getMostActiveDevs('5', 'IlRoman', 'calendar');
