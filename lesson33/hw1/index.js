@@ -21,19 +21,10 @@ export function getMostActiveDevs(user) {
 };
 
 function findMostActiveUsers(data) {
-    // Пишет ошибку - обьект не итерируемый!
-    // data = data.reduce((acc, currentValue) => {
-    //     return [...acc, currentValue.commit.author,] });
-
-    // здесь снова ошибка. По началу работало а потом вдруг перестало...
-    let arrOfCommits = [];
-    for (let i = 0; i < data.length; i++) {
-        let obj = { ['name']: data[i].commit.author.name, ['count']: 1, ['email']: data[i].commit.author.email };
-        arrOfCommits.push(obj)
-    }
+    let userData = data.map(({ commit: { author: { email, date, name } } }) => ({ email, date, name }));
 
     // Сортировка по имени
-    arrOfCommits = arrOfCommits.sort(function (a, b) {
+    userData = userData.sort(function (a, b) {
         let nameA = a.name.toLowerCase();
         let nameB = b.name.toLowerCase();
         if (nameA < nameB) return -1;
@@ -43,13 +34,13 @@ function findMostActiveUsers(data) {
 
     // удаляем дубликаты
     let uniqueUsers = [];
-    for (let i = 0; i < arrOfCommits.length; i++) {
-        if ((i + 1) == arrOfCommits.length) return;
-        if (arrOfCommits[i].name !== arrOfCommits[i + 1].name) {
-            uniqueUsers.push(arrOfCommits[i]);
+    for (let i = 0; i < userData.length; i++) {
+        if ((i + 1) == userData.length) return;
+        if (userData[i].name !== userData[i + 1].name) {
+            uniqueUsers.push(userData[i]);
         }
     }
-    console.log(uniqueUsers)
+    console.log(uniqueUsers);
 
     // считаем количество коммитов
 
