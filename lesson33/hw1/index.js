@@ -23,8 +23,12 @@ const fetchUserData = userName => {
 function findMostActiveUsers(data, days) {
     let userData = data.map(({ commit: { author: { email, date, name } } }) => ({ email, date, name }));
 
+    // фильтр по дате
+    let startDate = new Date(new Date().setDate(new Date().getDate() - days));
+    let filteredData = userData.filter(elem => new Date().setDate(new Date(elem.date).getDate()) > startDate);
+
     // Сортировка по имени
-    let sortedData = userData.sort(function (a, b) {
+    let sortedData = filteredData.sort(function (a, b) {
         let nameA = a.name.toLowerCase();
         let nameB = b.name.toLowerCase();
         if (nameA < nameB) return -1;
@@ -49,6 +53,7 @@ function findMostActiveUsers(data, days) {
         }
     }
 
+    // находим самого активного
     let result = { count: 0 };
     for (let i = 0; i < arrOfUsers.length; i++) {
         if (arrOfUsers[i].count > result.count) {
@@ -76,3 +81,5 @@ const onSearchArrOfCommits = () => {
 };
 
 showUserBtnElem.addEventListener('click', onSearchArrOfCommits);
+
+getMostActiveDevs('15', 'IlRoman', 'calendar')
