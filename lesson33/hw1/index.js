@@ -78,7 +78,7 @@ const onSearchArrOfCommits = () => {
     getMostActiveDevs(days, userName, repoId)
 };
 
-// вводить в инпут в порядке: дата, имя юзера, название репозитория (с пробелами)
+// вводить в инпут надо в таком порядке: дата, имя юзера, название репозитория (с пробелами)
 showUserBtnElem.addEventListener('click', onSearchArrOfCommits);
 
-getMostActiveDevs('5', 'IlRoman', 'calendar');
+// getMostActiveDevs('10', 'IlRoman', 'calendar');
