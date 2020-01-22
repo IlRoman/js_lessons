@@ -1,22 +1,37 @@
 const userAvatarElem = document.querySelector('.user__avatar');
 const userNameElem = document.querySelector('.user__name');
-const userLocationElem = document.querySelector('.user__location');
+const userEmailElem = document.querySelector('.user__email');
 const showUserBtnElem = document.querySelector('.name-form__btn');
 const userNameInputEelem = document.querySelector('.name-form__input');
 const defaultAvatar = 'https://avatars3.githubusercontent.com/u10001';
 userAvatarElem.src = defaultAvatar;
 
-
-function renderUserData(user) {
-    // console.log(user);
+function renderUserData(userData) {
+    const { avatar_url, login, email } = userData;
+    userAvatarElem.src = avatar_url;
+    userNameElem.textContent = login;
+    userEmailElem.textContent = email;
 }
 
-export function getMostActiveDevs(user) {
+const fetchUserData = userName => {
+    return fetch(`https://api.github.com/users/${userName}`)
+        .then(response => response.json())
+        .then(data => renderUserData(data));
+};
+
+export function getMostActiveDevs(arrOfUsers) {
+    let result = { count: 0 };
+    for (let i = 0; i < arrOfUsers.length; i++) {
+        if (arrOfUsers[i].count > result.count) {
+            result = arrOfUsers[i];
+        }
+    }
+
     return new Promise((resolve, reject) => {
         function callback() {
-            resolve(user);
+            resolve(result);
         }
-        renderUserData(user, callback);
+        fetchUserData(result.name, callback);
     });
 };
 
@@ -24,7 +39,7 @@ function findMostActiveUsers(data) {
     let userData = data.map(({ commit: { author: { email, date, name } } }) => ({ email, date, name }));
 
     // Сортировка по имени
-    userData = userData.sort(function (a, b) {
+    let sortedData = userData.sort(function (a, b) {
         let nameA = a.name.toLowerCase();
         let nameB = b.name.toLowerCase();
         if (nameA < nameB) return -1;
@@ -32,21 +47,26 @@ function findMostActiveUsers(data) {
         return 0;
     })
 
-    // удаляем дубликаты
-    let uniqueUsers = [];
-    for (let i = 0; i < userData.length; i++) {
-        if ((i + 1) == userData.length) return;
-        if (userData[i].name !== userData[i + 1].name) {
-            uniqueUsers.push(userData[i]);
+    // считаем количество коммитов
+    let arrOfUsers = [];
+    let count = 0;
+    for (let i = 0; i < sortedData.length; i++) {
+        if ((i + 1) !== sortedData.length) {
+            if (i == sortedData.length - 2) {
+                arrOfUsers.push({ ['count']: count + 1, ...sortedData[i] })
+            }
+            if (sortedData[i].name == sortedData[i + 1].name) {
+                count++
+            } else {
+                arrOfUsers.push({ ['count']: count, ...sortedData[i] })
+                count = 0;
+            }
         }
     }
-    console.log(uniqueUsers);
 
-    // считаем количество коммитов
-
-    getMostActiveDevs(result)
+    getMostActiveDevs(arrOfUsers)
         .then(data => console.log(data))
-    // .catch(error = console.log(error));
+    //  .catch(error = console.log(error));
 }
 
 const fetchArrOfCommits = (userId, repoId) => {
@@ -60,7 +80,6 @@ const onSearchArrOfCommits = () => {
     const userName = userNameInputEelem.value.split(' ')[0];
     const repoId = userNameInputEelem.value.split(' ')[1];
     fetchArrOfCommits(userName, repoId)
-        .then(usersData => findMostActiveUsers(usersData));
 };
 
 showUserBtnElem.addEventListener('click', onSearchArrOfCommits);

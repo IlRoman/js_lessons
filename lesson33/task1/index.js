@@ -25,7 +25,7 @@ const userNameInputEelem = document.querySelector('.name-form__input');
 const onSearchUser = () => {
     const userName = userNameInputEelem.value;
     fetchUserData(userName)
-        .then(userData => renderUserData(userData));
+        .then(userData => renderUserData(userData))
 };
 
 showUserBtnElem.addEventListener('click', onSearchUser);
