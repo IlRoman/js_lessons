@@ -16,7 +16,8 @@ function renderUserData(userData) {
 const fetchUserData = userName => {
     return fetch(`https://api.github.com/users/${userName}`)
         .then(response => response.json())
-        .then(data => renderUserData(data));
+        .then(data => renderUserData(data))
+    // .catch(err => alert(err))
 };
 
 function findMostActiveUsers(data, days) {
@@ -25,48 +26,36 @@ function findMostActiveUsers(data, days) {
     // фильтр по дате
     let startDate = new Date(new Date().setDate(new Date().getDate() - days));
     let filteredData = userData.filter(elem => new Date().setDate(new Date(elem.date).getDate()) > startDate);
+    console.log(filteredData)
 
-    // Сортировка по имени
-    let sortedData = filteredData.sort(function (a, b) {
-        let nameA = a.name.toLowerCase();
-        let nameB = b.name.toLowerCase();
-        if (nameA < nameB) return -1;
-        if (nameA > nameB) return 1;
-        return 0;
-    })
-
-    // вычисляем уникальных юзеров и добавляем им свойство count с колличеством их коммитов
-    let arrOfUsers = [];
-    let count = 0;
-    for (let i = 0; i < sortedData.length; i++) {
-        if ((i + 1) !== sortedData.length) {
-            if (i == sortedData.length - 2) {
-                arrOfUsers.push({ ['count']: count + 1, ...sortedData[i] })
-            }
-            if (sortedData[i].name == sortedData[i + 1].name) {
-                count++
-            } else {
-                arrOfUsers.push({ ['count']: count, ...sortedData[i] })
-                count = 0;
-            }
-        }
-    }
+    // считаем количество коммитов
+    let objOfUsers = filteredData.reduce((acc, { email, name }) => {
+        const oldCount = acc[email] ? acc[email].count : 0;
+        return {
+            ...acc,
+            [email]: { name, email, count: oldCount + 1 }
+        };
+    }, {});
+    console.log(objOfUsers);
 
     // находим самого активного юзера
+    let arrOfUsers = Object.entries(objOfUsers);
     let result = { count: 0 };
     for (let i = 0; i < arrOfUsers.length; i++) {
-        if (arrOfUsers[i].count > result.count) {
-            result = arrOfUsers[i];
+        if (arrOfUsers[i][1].count > result.count) {
+            result = arrOfUsers[1]
         }
     }
-    fetchUserData(result.name);
+
+    fetchUserData(result[1].name);
 }
 
 export function getMostActiveDevs(days, userId, repoId) {
     const fetchArrOfCommits = (userId, repoId) => {
         return fetch(`https://api.github.com/repos/${userId}/${repoId}/commits?per_page=100`)
             .then(response => response.json())
-            .then(data => findMostActiveUsers(data, days));
+            .then(data => findMostActiveUsers(data, days))
+        // .catch(err => alert(err))
     };
     fetchArrOfCommits(userId, repoId);
 };
@@ -81,4 +70,4 @@ const onSearchArrOfCommits = () => {
 // вводить в инпут надо в таком порядке: дата, имя юзера, название репозитория (с пробелами)
 showUserBtnElem.addEventListener('click', onSearchArrOfCommits);
 
-// getMostActiveDevs('10', 'IlRoman', 'calendar');
+// getMostActiveDevs('15', 'IlRoman', 'calendar');
