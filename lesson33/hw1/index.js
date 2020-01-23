@@ -7,18 +7,11 @@ const defaultAvatar = 'https://avatars3.githubusercontent.com/u10001';
 userAvatarElem.src = defaultAvatar;
 
 function renderUserData(userData) {
-    const { avatar_url, login, email } = userData;
-    userAvatarElem.src = avatar_url;
-    userNameElem.textContent = login;
+    const { name, email } = userData[1];
+    // userAvatarElem.src = avatar_url;
+    userNameElem.textContent = name;
     userEmailElem.textContent = email;
 }
-
-const fetchUserData = userName => {
-    return fetch(`https://api.github.com/users/${userName}`)
-        .then(response => response.json())
-        .then(data => renderUserData(data))
-    // .catch(err => alert(err))
-};
 
 function findMostActiveUsers(data, days) {
     let userData = data.map(({ commit: { author: { email, date, name } } }) => ({ email, date, name }));
@@ -45,14 +38,14 @@ function findMostActiveUsers(data, days) {
         }
     }
 
-    fetchUserData(result[1].name);
+    return result;
 }
 
 export function getMostActiveDevs(days, userId, repoId) {
     const fetchArrOfCommits = (userId, repoId) => {
         return fetch(`https://api.github.com/repos/${userId}/${repoId}/commits?per_page=100`)
             .then(response => response.json())
-            .then(data => findMostActiveUsers(data, days))
+            .then(data => renderUserData(findMostActiveUsers(data, days)))
         // .catch(err => alert(err))
     };
     fetchArrOfCommits(userId, repoId);
@@ -68,4 +61,4 @@ const onSearchArrOfCommits = () => {
 // вводить в инпут надо в таком порядке: дата, имя юзера, название репозитория (с пробелами)
 showUserBtnElem.addEventListener('click', onSearchArrOfCommits);
 
-// getMostActiveDevs('15', 'IlRoman', 'calendar');
+getMostActiveDevs('15', 'IlRoman', 'calendar');
