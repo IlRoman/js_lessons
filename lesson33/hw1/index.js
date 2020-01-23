@@ -36,7 +36,6 @@ function findMostActiveUsers(data, days) {
             [email]: { name, email, count: oldCount + 1 }
         };
     }, {});
-    console.log(objOfUsers);
 
     // находим самого активного юзера
     let arrOfUsers = Object.entries(objOfUsers);
