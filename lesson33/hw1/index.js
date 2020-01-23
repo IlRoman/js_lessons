@@ -61,4 +61,4 @@ const onSearchArrOfCommits = () => {
 // вводить в инпут надо в таком порядке: дата, имя юзера, название репозитория (с пробелами)
 showUserBtnElem.addEventListener('click', onSearchArrOfCommits);
 
-getMostActiveDevs('15', 'IlRoman', 'calendar');
+// getMostActiveDevs('15', 'IlRoman', 'calendar');
