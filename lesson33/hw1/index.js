@@ -26,7 +26,6 @@ function findMostActiveUsers(data, days) {
     // фильтр по дате
     let startDate = new Date(new Date().setDate(new Date().getDate() - days));
     let filteredData = userData.filter(elem => new Date().setDate(new Date(elem.date).getDate()) > startDate);
-    console.log(filteredData)
 
     // считаем количество коммитов
     let objOfUsers = filteredData.reduce((acc, { email, name }) => {
