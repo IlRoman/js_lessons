@@ -13,12 +13,6 @@ formElem.addEventListener('input', validation)
 
 const baseUrl = 'https://crudcrud.com/api/e83935408df146619768e91e138c7788/form';
 
-const answerFromServer = () => {
-    return fetch(baseUrl)
-        .then(response => response.json())
-        .then(answer => console.log(answer))
-}
-
 const sendToServer = formData => {
     return fetch(baseUrl, {
         method: 'POST',
@@ -39,11 +33,13 @@ const onFormSubmit = event => {
 
     sendToServer(formData)
         .then(response => response.json())
-        .then(answerFromServer())
+        .then(formData => {
+            alert(JSON.stringify(formData));
+        })
         .then(() => {
             for (let i = 0; i < formInput.length; i++) formInput[i].value = '';
         })
-        .catch(error => err.textContent = 'Failed to create User');
+        .catch(() => err.textContent = 'Failed to create User');
 };
 
 formElem.addEventListener('submit', onFormSubmit);
