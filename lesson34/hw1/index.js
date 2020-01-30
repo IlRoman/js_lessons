@@ -4,9 +4,13 @@ let err = document.querySelector('.error-text');
 
 const validation = () => {
     const isValidForm = formElem.reportValidity();
-    isValidForm
-        ? submitButton.removeAttribute('disabled')
-        : submitButton.setAttribute('disabled', true);
+    if (isValidForm) {
+        submitButton.removeAttribute('disabled');
+        err.textContent = '';
+    } else {
+        submitButton.setAttribute('disabled', true);
+        err.textContent = '';
+    }
 };
 
 formElem.addEventListener('input', validation)
