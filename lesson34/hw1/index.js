@@ -1,5 +1,6 @@
 let formElem = document.querySelector('.login-form');
-let submitButton = document.querySelector('.submit-button')
+let submitButton = document.querySelector('.submit-button');
+let err = document.querySelector('.error-text');
 
 const validation = () => {
     const isValidForm = formElem.reportValidity();
@@ -37,11 +38,12 @@ const onFormSubmit = event => {
     let formInput = document.querySelectorAll('.form-input');
 
     sendToServer(formData)
+        .then(response => response.json())
         .then(answerFromServer())
         .then(() => {
             for (let i = 0; i < formInput.length; i++) formInput[i].value = '';
         })
-        .catch(error => console.log(new Error('Failed to create User')))
+        .catch(error => err.textContent = 'Failed to create User');
 };
 
 formElem.addEventListener('submit', onFormSubmit);
