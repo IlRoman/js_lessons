@@ -15,7 +15,7 @@ const validation = () => {
 
 formElem.addEventListener('input', validation)
 
-// const baseUrl = 'https://crudcrud.com/api/e83935408df146619768e91e138c7788/form';
+const baseUrl = 'https://crudcrud.com/api/e83935408df146619768e91e138c7788/form';
 
 const sendToServer = formData => {
     return fetch(baseUrl, {
@@ -44,6 +44,7 @@ const onFormSubmit = event => {
             for (let i = 0; i < formInput.length; i++) formInput[i].value = '';
         })
         .catch(() => err.textContent = 'Failed to create User');
+    submitButton.setAttribute('disabled', 'disabled');
 };
 
 formElem.addEventListener('submit', onFormSubmit);
