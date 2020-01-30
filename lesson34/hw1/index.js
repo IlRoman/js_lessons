@@ -41,7 +41,7 @@ const onFormSubmit = event => {
             alert(JSON.stringify(formData));
         })
         .then(() => {
-            for (let i = 0; i < formInput.length; i++) formInput[i].value = '';
+            formInput.reset();
         })
         .catch(() => err.textContent = 'Failed to create User');
     submitButton.setAttribute('disabled', 'disabled');
