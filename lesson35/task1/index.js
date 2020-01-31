@@ -17,7 +17,7 @@ try {
 let productParsingResult;
 
 try {
-    const product = JSON.parse('{"name": "Alex"}'");
+    const product = JSON.parse('{"name": "Alex"');
     console.log("Product data: ", product);
     productParsingResult = "success";
 } catch (e) {
