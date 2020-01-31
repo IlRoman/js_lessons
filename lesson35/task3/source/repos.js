@@ -9,5 +9,6 @@ export function renderRepos(repoList) {
             return listElem;
         })
 
+    listElem.innerHTML = '';
     listElem.append(...repoListElems);
 }
