@@ -15,7 +15,7 @@ const validation = () => {
 
 formElem.addEventListener('input', validation)
 
-const baseUrl = 'https://crudcrud.com/api/e83935408df146619768e91e138c7788/form';
+const baseUrl = 'https://crudcrud.com/api/e6a3df441e90455287a010ba9040b9d7/form';
 
 const sendToServer = formData => {
     return fetch(baseUrl, {
@@ -33,15 +33,13 @@ const onFormSubmit = event => {
     const formData = [...new FormData(formElem)]
         .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
 
-    let formInput = document.querySelectorAll('.form-input');
-
     sendToServer(formData)
         .then(response => response.json())
         .then(formData => {
             alert(JSON.stringify(formData));
         })
         .then(() => {
-            formInput.reset();
+            formElem.reset();
         })
         .catch(() => err.textContent = 'Failed to create User');
     submitButton.setAttribute('disabled', 'disabled');
