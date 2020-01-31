@@ -1,8 +1,12 @@
 const userAvatarElem = document.querySelector('.user__avatar');
 const userNameElem = document.querySelector('.user__name');
-const defaultAvatar = 'https://avatars3.githubusercontent.com/u10001';
 const userLocation = document.querySelector('.user__location');
-userAvatarElem.src = defaultAvatar;
+
+const defaultUser = {
+    avatar_url: 'https://avatars3.githubusercontent.com/u10001',
+    name: '',
+    location: '',
+}
 
 export const renderUserData = (data) => {
     const { avatar_url, name, location } = data;
@@ -12,3 +16,5 @@ export const renderUserData = (data) => {
         ? `from ${location}`
         : '';
 }
+
+renderUserData(defaultUser)
