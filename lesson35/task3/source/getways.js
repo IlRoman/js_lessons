@@ -10,17 +10,17 @@ export function getUserData() {
     const userName = userNameInputEelem.value;
     const fetchUserData = userName => {
         return fetch(`https://api.github.com/users/${userName}`)
-            .then(data => {
-                renderUserData(data);
-                return data.repos_url;
-            })
-            .then(url => fetchRepositories(url))
             .then(response => {
                 if (response.ok) {
                     return response.json()
                 }
                 throw new Error('Failed to load data');
             })
+            .then(data => {
+                renderUserData(data);
+                return data.repos_url;
+            })
+            .then(url => fetchRepositories(url))
             .catch(err => alert(err.message))
             .finally(() => {
                 hideSpinner();
