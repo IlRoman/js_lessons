@@ -1,7 +1,9 @@
 const listElem = document.querySelector('.list');
+let task_input = document.querySelector('.task-input');
 
 export const renderListItems = tasksList => {
     listElem.innerHTML = '';
+    task_input.value = '';
 
     const listItemsElems = tasksList
         .sort((a, b) => b.date - a.date)

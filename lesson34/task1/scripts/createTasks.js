@@ -1,9 +1,7 @@
 import { renderListItems } from './renderListItems.js';
 import { createNewTask, getTasksList } from './tasksGetWay.js'
 
-let listOfTasks = document.querySelector('.list');
 let createTaskBtn = document.querySelector('.create-task-btn');
-
 createTaskBtn.addEventListener('click', createTask);
 
 export function createTask() {
@@ -20,8 +18,6 @@ export function createTask() {
         .then(() => getTasksList())
         .then(tasks => {
             localStorage.setItem('tasksList', JSON.stringify(tasks))
-            listOfTasks.innerHTML = '';
-            task_input.value = '';
             renderListItems(tasks);
         })
 }
